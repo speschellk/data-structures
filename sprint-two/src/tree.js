@@ -27,7 +27,8 @@ treeMethods.contains = function(target, node, found) {
     found = false;
   }
   if (node === undefined) {
-    node = {value: this.value, children: this.children};
+    // node = {value: this.value, children: this.children};
+    node = this;
     if (node.value === target) {
       return true;
     }
