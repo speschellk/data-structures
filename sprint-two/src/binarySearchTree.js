@@ -28,24 +28,54 @@ bstTreeMethods.insert = function(value, node) {
   }
 };
 
-bstTreeMethods.contains = function(target) {
+bstTreeMethods.contains = function(target, node, found) {
+  found = found || false;
+  node = node || this;
 
+  if (node.value === target) {
+    return true;
+  } else {
+
+    if (target > node.value) {
+      if (node.right !== null) {
+        found = this.contains(target, node.right, found);
+      }
+    } else {
+      if (node.left !== null) {
+        found = this.contains(target, node.left, found);
+      }
+    }
+  }
+  return found;
 };
 
-bstTreeMethods.depthFirstLog = function(cb) {
-
+bstTreeMethods.depthFirstLog = function(iterator, node) {
+  // need to start at the top and traverse down the tree via recursion
+  node = node || this;
+  iterator(node.value);
+  // if (target > node.value) {
+  //   if (node.right !== null) {
+  //     found = this.contains(target, node.right, found);
+  //   }
+  // } else {
+  //   if (node.left !== null) {
+  //     found = this.contains(target, node.left, found);
+  //   }
+  // }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
 
+var array = [];
+var func = function(value) { array.push(value); };
 var bst = BinarySearchTree(5);
 bst.insert(2);
 bst.insert(3);
-bst.insert(7);
-bst.insert(6);
-console.log(bst);
-console.log(bst.right);
+
+bst.depthFirstLog(func);
+console.log(array);
+
 
 
