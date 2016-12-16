@@ -4,6 +4,7 @@ var LinkedList = function() {
   list.tail = null;
 
   // Time complexity - O(1)
+  // We will always know where the tail is, thus making it constant
   list.addToTail = function(value) {
 
     var value = Node(value);
@@ -18,6 +19,7 @@ var LinkedList = function() {
   };
 
   // Time complexity - O(1)
+  // we will always know where the head is, thus making it constant
   list.removeHead = function() {
     var formerHead = list.head.value;
     list.head = list.head.next;
@@ -25,6 +27,7 @@ var LinkedList = function() {
   };
 
   // Time complexity - O(n)
+  // we need to search the list for our target node, potentially traversing through all n of them.
   list.contains = function(target, node) {
     node = node || list.head;
 
