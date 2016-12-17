@@ -24,4 +24,10 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  // additional test
+  it('should not increase the size of the set when same value is added more than once', function() {
+    set.add('Danny Glover');
+    set.add('Danny Glover');
+    expect(Object.keys(set._storage).length).to.equal(1);
+  });
 });

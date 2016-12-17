@@ -41,4 +41,12 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // additional test
+  it ('should correctly find value when more than two children exist on the parent node', function () {
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.addChild(7);
+    tree.addChild(8);
+    expect(tree.contains(7)).to.equal(true);
+  });
 });

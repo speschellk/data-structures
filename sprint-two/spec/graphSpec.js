@@ -68,4 +68,14 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  // additional test
+  it('should not detect edges for newly created nodes that have not been connected', function() {
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addNode(7);
+    expect(graph.hasEdge(5, 6)).to.equal(false);
+    expect(graph.hasEdge(5, 7)).to.equal(false);
+    expect(graph.hasEdge(6, 7)).to.equal(false);
+  });
 });

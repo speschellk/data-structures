@@ -47,6 +47,35 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  // additional test
+  it ('finds a second tuple in a bucket after the first tuple has been removed', function() {
+    // we want to make sure there are at least 2 items in a bucket
+    var v1 = 'val1';
+    var v2 = 'val2';
+    var v3 = 'val3';
+    var v4 = 'val4';
+    var v5 = 'val5';
+    var v6 = 'val6';
+    var v7 = 'val7';
+    var v8 = 'val8';
+    var v9 = 'val9';
+    hashTable.insert(v1, v1);
+    // hashTable.insert(v2, v2);
+    // hashTable.insert(v3, v3);
+    // hashTable.insert(v4, v4);
+    // hashTable.insert(v5, v5);
+    // hashTable.insert(v6, v6);
+    // hashTable.insert(v7, v7);
+    // hashTable.insert(v8, v8);
+    hashTable.insert(v9, v9);
+    // for (var i = 0; i < 8; i++) {
+    //   console.log(hashTable._storage.get(i));
+    // } 
+    // Found double values for v1 and v9 in index 4
+    hashTable.remove(v1);
+    expect(hashTable.retrieve(v9)).to.equal(v9);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
